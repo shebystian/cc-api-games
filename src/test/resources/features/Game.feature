@@ -7,7 +7,7 @@ Feature: Prueba Despliegue de informacion de juego
 		Given Necesito obtener mas informacion de un juego
 		
 		When Tengo como dato el nombre
-		#Lista de datos
+			#Lista de datos
 				| Datos  								| 
 		    |	God of War	      		| #Nombre
 					
@@ -21,10 +21,9 @@ Feature: Prueba Despliegue de informacion de juego
 		Given Quiero obtener mas informacion de un juego2
 		
 		When Tengo como dato la categoria
-		#Datatable
-					#Lista de datos
+			#Lista de datos
 				| Datos  					| 
-		    |	zz     	| #Categoria
+		    |	Shooter		     	| #Categoria
 					
 		Then Consulto información del juego2
 		
