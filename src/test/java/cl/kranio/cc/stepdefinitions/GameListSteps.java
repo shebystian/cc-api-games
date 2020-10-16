@@ -46,7 +46,7 @@ public class GameListSteps {
 		try {
 			
 			String urlBase = properties.getProperties().getProperty("api.urlbase");
-			String endpoint = "/game";
+			String endpoint = "/games";
 			
 			request = given().header("Content-Type", "application/json"); // indico el tipo de contenido
 			response = request

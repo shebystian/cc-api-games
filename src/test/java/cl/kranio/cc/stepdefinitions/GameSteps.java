@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import cl.kranio.cc.config.ApplicationProperties;
 import cl.kranio.cc.model.GameRequest;
 import cl.kranio.cc.model.GameResponse;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -57,19 +58,19 @@ public class GameSteps {
 		}
 	}
 	
-	@When("^Consulto por la información del juego$")
+	@Then("^Consulto por la información del juego$")
 	public void consulto_por_la_información_del_juego() throws Throwable {
 		logger.info("Consulto información del juego");
 		mapper = new ObjectMapper();
 		try {
 			
 			String urlBase = properties.getProperties().getProperty("api.urlbase");
-			String endpoint = "/game";
-			String gameJSON= mapper.writeValueAsString(game); // transformo el objeto a json, para enviarlo
+			String endpoint = "/game/"+game.getName();
+			//String gameJSON= mapper.writeValueAsString(game); // transformo el objeto a json, para enviarlo
 			
 			request = given().header("Content-Type", "application/json"); // indico el tipo de contenido
-			response = request.when().body(gameJSON)
-					.post(urlBase + endpoint);
+			response = request.when()
+					.get(urlBase + endpoint);
 			
 			logger.info("Api responde a prueba correctamente.");
 		}
@@ -80,7 +81,7 @@ public class GameSteps {
 		}
 	}
 	
-	@Then("^Valida Respuesta$")
+	@And("^Valida Respuesta$")
 	public void valida_respuesta() throws Throwable {
 		mapper = new ObjectMapper();
 		Gson gson = new Gson();
@@ -128,7 +129,7 @@ public class GameSteps {
 		}
 		}
 	
-	@When("^Consulto información del juego2$")
+	@Then("^Consulto información del juego2$")
 	public void consulto_la_lista_de_juegos() throws Throwable {
 		logger.info("Consulto información del juego");
 		mapper = new ObjectMapper();
@@ -136,12 +137,12 @@ public class GameSteps {
 			request = null;
 			response = null;
 			String urlBase = properties.getProperties().getProperty("api.urlbase");
-			String endpoint = "/game/category";
-			String gameJSON= mapper.writeValueAsString(game); // transformo el objeto a json, para enviarlo
+			String endpoint = "/game/category/"+game.getCategory();
+			//String gameJSON= mapper.writeValueAsString(game); // transformo el objeto a json, para enviarlo
 			
 			request = given().header("Content-Type", "application/json"); // indico el tipo de contenido
-			response = request.when().body(gameJSON)
-					.post(urlBase + endpoint);
+			response = request.when()
+					.get(urlBase + endpoint);
 			
 			logger.info("Api responde a prueba correctamente.");
 		}
@@ -152,7 +153,7 @@ public class GameSteps {
 		}
 	}
 	
-	@Then("^Valida Respuesta2$")
+	@And("^Valida Respuesta2$")
 	public void valida_respuesta2() throws Throwable {
 		mapper = new ObjectMapper();
 		Gson gson = new Gson();

@@ -9,7 +9,7 @@ Feature: Prueba Despliegue de informacion de juego
 		When Tengo como dato el nombre
 			#Lista de datos
 				| Datos  								| 
-		    |	God of War	      		| #Nombre
+		    |	Doom	      		| #Nombre
 					
 		Then Consulto por la información del juego
 		
