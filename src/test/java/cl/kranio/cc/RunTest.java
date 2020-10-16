@@ -8,7 +8,8 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features = {"src/test/resources/features/"},
 				plugin = {"json:target/cucumber-report.json",
-          					"pretty:target/cucumber-pretty.txt"},
+          					"pretty:target/cucumber-pretty.txt",
+          					"pretty", "html:target/cucumber-reports"},
 				glue = {"cl.kranio.cc.stepdefinitions"},
 				monochrome = true, 
 				strict = true)
